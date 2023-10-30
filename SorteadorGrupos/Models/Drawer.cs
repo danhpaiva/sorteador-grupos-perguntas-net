@@ -4,7 +4,7 @@ namespace SorteadorGrupos.Models;
 public class Drawer
 {
     private int Amount { get; set; }
-    public Group Draw(Group group)
+    public Group Sort(Group group)
     {
         Random random = new();
 
