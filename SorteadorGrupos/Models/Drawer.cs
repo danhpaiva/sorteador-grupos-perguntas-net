@@ -1,8 +1,6 @@
-﻿namespace SorteadorGrupos.Models;
-
-using System.Text;
+﻿using System.Text;
 using static System.Console;
-
+namespace SorteadorGrupos.Models;
 public class Drawer
 {
     private int Amount { get; set; }
@@ -23,7 +21,7 @@ public class Drawer
         }
         catch (Exception)
         {
-            WriteLine("Deu erro ao tentar monstar os parâmetros");
+            WriteLine("Deu erro ao coletar os Grupos");
         }
 
         return group;
@@ -31,27 +29,30 @@ public class Drawer
 
     public void SaveFile(Group group)
     {
+        string message = $"\n{DateTime.Now} : O {group.Name} {group.Sorted} fará perguntas ao {group.Name} {group.Number}";
         try
         {
             DateTime dateTime = DateTime.Now;
             StreamWriter sw = new($"avaliacao_{dateTime.ToString("yyyy_MM_dd_HH_mm_ss")}.txt", true, Encoding.UTF8);
-            sw.WriteLine($"\n{DateTime.Now} : O {group.Name} {group.Sorted} fará perguntas ao {group.Name} {group.Number}");
+            WriteLine(message);
+            sw.WriteLine(message);
 
             WriteLine($"Digite a nota parcial para o {group.Name} {group.Number} :");
             group.Grade = int.Parse(ReadLine());
 
             sw.WriteLine($"\n{DateTime.Now} : Nota para o {group.Name} {group.Number}: {group.Grade}");
-            WriteLine("\nArquivo salvo com sucesso!\nAperte Enter!");
+            WriteLine("\nArquivo salvo com sucesso!" +
+                "\nPressione Enter!");
             sw.Close();
         }
         catch (Exception erro)
         {
-            WriteLine($"Deu erro ao tentar gravar o arquivo: {erro.Message}");
+            WriteLine($"Deu erro ao tentar gravar o arquivo: {erro.Message}" +
+                $"\nPressione Enter!");
         }
-    }
-
-    public void Message(Group group)
-    {
-        WriteLine($"\n{DateTime.Now} : O {group.Name} {group.Sorted} fará perguntas ao {group.Name} {group.Number}");
+        finally
+        {
+            ReadLine();
+        }
     }
 }
