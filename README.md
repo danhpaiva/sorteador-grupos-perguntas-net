@@ -1,7 +1,7 @@
 <h1 align="center"> 🖳 Sorteador 🖳</h1>
 
 <p align="center">
-    <img src="./_src/sorteador.png" width="400" alt="Sorteador">
+    <img src="./_src/sorteador.png" width="600" alt="Sorteador">
 </p>
 
 <p align="center">
