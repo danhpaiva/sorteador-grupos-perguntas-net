@@ -5,5 +5,5 @@ WriteLine("Sorteador de Grupos");
 
 Group group = new();
 Drawer drawer = new();
-group = drawer.Draw(group);
+group = drawer.Sort(group);
 drawer.SaveFile(group);
