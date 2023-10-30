@@ -10,14 +10,21 @@ public class Drawer
     {
         Random random = new();
 
-        WriteLine("\nDigite o número do Grupo que irá se apresentar neste momento: ");
-        group.Number = int.Parse(ReadLine());
+        try
+        {
+            WriteLine("\nDigite o número do Grupo que irá se apresentar neste momento: ");
+            group.Number = int.Parse(ReadLine());
 
-        WriteLine("\nDigite a quantidade de grupos que estão participando " +
-            "\nnesse trabalho acadêmico: ");
-        Amount = int.Parse(ReadLine());
+            WriteLine("\nDigite a quantidade de grupos que estão participando " +
+                "\nnesse trabalho acadêmico: ");
+            Amount = int.Parse(ReadLine());
 
-        group.Sorted = random.Next(1, Amount);
+            group.Sorted = random.Next(1, Amount);
+        }
+        catch (Exception)
+        {
+            WriteLine("Deu erro ao tentar monstar os parâmetros");
+        }
 
         return group;
     }
@@ -40,10 +47,6 @@ public class Drawer
         catch (Exception erro)
         {
             WriteLine($"Deu erro ao tentar gravar o arquivo: {erro.Message}");
-        }
-        finally
-        {
-           
         }
     }
 
